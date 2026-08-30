@@ -5,6 +5,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #1f1f24;
 }
 
 .app {
@@ -12,27 +14,79 @@ body {
   min-height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
-  width: 240px;
-  padding: 30px 20px;
+  width: 260px;
+  min-height: 100vh;
+  padding: 32px 20px;
   background: #fafafa;
 }
 
 .sidebar h1 {
-  margin-bottom: 40px;
+  margin: 0 0 32px 8px;
+  font-size: 32px;
 }
 
-.sidebar nav p,
-.sidebar-bottom p {
-  padding: 10px;
-  margin: 5px 0;
+/* New Task button */
+.new-task {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 28px;
+  border: none;
+  border-radius: 10px;
+  background: #4a3bd1;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
+/* Section headings */
+.section-title {
+  margin: 22px 12px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #9999a3;
+}
+
+/* Navigation */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 12px;
+  margin: 4px 0;
+  border-radius: 10px;
+  color: #6f707a;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: #f0eff8;
+}
+
+.nav-item.active {
+  background: #ebe9f8;
+  color: #4a3bd1;
+}
+
+.nav-item span {
+  font-size: 16px;
+}
+
+/* Bottom navigation */
 .sidebar-bottom {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
+/* Main content */
 .main-content {
   flex: 1;
   padding: 50px;
+}
+
+.main-content h2 {
+  margin: 0 0 10px;
+  font-size: 32px;
 }
