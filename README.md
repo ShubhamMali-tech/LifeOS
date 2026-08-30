@@ -142,7 +142,7 @@ Dashboard
  ├── Streak
  └── Daily Progress
 
-###Getting Started
+## Getting Started
 1. Clone the repository
 git clone <your-repository-url>
 
