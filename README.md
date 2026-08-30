@@ -1,36 +1,18 @@
 # ProteinTracker
 
-A clean and minimal web application for tracking daily protein intake and building a personalized nutrition profile.
-
-ProteinTracker is designed around a simple idea: make daily nutrition tracking easy to understand, quick to update, and visually focused.
-
----
+A minimal web application for tracking daily protein intake and building a personalized nutrition profile.
 
 ## Overview
 
-ProteinTracker allows users to create a basic nutrition profile and track their daily protein progress.
+ProteinTracker helps users create a nutrition profile and monitor their daily nutrition progress through a simple, focused interface.
 
-The application currently includes:
-
-- Nutrition profile setup
-- Personal information collection
-- Gender and goal selection
-- Local profile persistence
-- Dashboard interface
-- Daily protein progress
-- Calorie and meal tracking
-- Consistency / streak tracking
-- Progress overview
-
-The project is being developed incrementally, with the UI/UX treated as a core part of the product.
-
----
+The project is being developed incrementally with a strong focus on clean UI, predictable UX, maintainable code, and practical functionality.
 
 ## Features
 
 ### Profile Setup
 
-Users can create a nutrition profile containing:
+Users can create a nutrition profile with:
 
 - Name
 - Age
@@ -45,14 +27,14 @@ Supported goals:
 - Maintain Weight
 - Lose Weight
 
-Profile information is persisted using browser `localStorage`.
+Profile data is currently stored in the browser using `localStorage`.
 
 ### Dashboard
 
-The dashboard provides a daily overview of:
+The dashboard provides an overview of:
 
-- Protein consumption
-- Daily protein goal
+- Daily protein intake
+- Protein target
 - Calories
 - Number of meals
 - Current streak
@@ -60,17 +42,18 @@ The dashboard provides a daily overview of:
 
 ### Navigation
 
-The application is structured around:
+The application includes the following primary areas:
 
 - Dashboard
 - Meals
 - Progress
 
-The navigation is designed to keep the primary nutrition workflow accessible without unnecessary complexity.
-
----
-
 ## Tech Stack
+
+### Backend
+
+- Python
+- Flask
 
 ### Frontend
 
@@ -79,22 +62,15 @@ The navigation is designed to keep the primary nutrition workflow accessible wit
 - Vanilla JavaScript
 - Google Fonts — Inter
 
-### Backend
-
-- Python
-- Flask
-
 ### Storage
 
 - Browser `localStorage`
 
-### Development
+### Development Tools
 
 - Git
 - GitHub
 - VS Code
-
----
 
 ## Project Structure
 
@@ -102,88 +78,358 @@ The navigation is designed to keep the primary nutrition workflow accessible wit
 ProteinTracker/
 │
 ├── app.py
+├── requirements.txt
+├── README.md
 │
 ├── templates/
 │   ├── index.html
 │   └── dashboard.html
 │
-├── static/
-│   ├── style.css
-│   └── script.js
-│
-├── README.md
-└── requirements.txt
+└── static/
+    ├── style.css
+    └── script.js
+```
 
-Application Flow
-User
- │
- ▼
+## Application Flow
+
+```text
 Profile Setup
- │
- ├── Name
- ├── Age
- ├── Gender
- ├── Weight
- ├── Height
- └── Goal
- │
- ▼
-Profile Validation
- │
- ▼
-localStorage
- │
- ▼
+      │
+      ▼
+Enter Personal Information
+      │
+      ├── Name
+      ├── Age
+      ├── Gender
+      ├── Weight
+      ├── Height
+      └── Goal
+      │
+      ▼
+Validate Profile
+      │
+      ▼
+Save Profile
+      │
+      ▼
 Dashboard
- │
- ├── Protein Intake
- ├── Calories
- ├── Meals
- ├── Streak
- └── Daily Progress
+      │
+      ├── Protein Intake
+      ├── Calories
+      ├── Meals
+      ├── Streak
+      └── Daily Progress
+```
 
 ## Getting Started
 
-1. Clone the repository
+### Prerequisites
+
+- Python 3.10+
+- Git
+
+### Clone the Repository
+
+```bash
 git clone <your-repository-url>
-
-Move into the project directory:
-
 cd ProteinTracker
-2. Create a virtual environment
+```
+
+### Create a Virtual Environment
 
 Windows:
 
+```bash
 python -m venv venv
-
-Activate it:
-
 venv\Scripts\activate
+```
 
 macOS / Linux:
 
+```bash
+python3 -m venv venv
 source venv/bin/activate
-3. Install dependencies
+```
+
+### Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-If requirements.txt does not exist yet:
+If `requirements.txt` has not been created yet:
 
+```bash
 pip install flask
-
-Then generate it with:
-
 pip freeze > requirements.txt
-4. Run the application
-python app.py
+```
 
-The Flask development server will start locally.
+### Run the Application
+
+```bash
+python app.py
+```
 
 Open:
 
+```text
 http://127.0.0.1:5000
-Flask Routes
-Route	Purpose
-/	Profile setup
-/dashboard	Nutrition dashboard
+```
 
-The application currently uses Flask primarily for page routing and template rendering.
+## Flask Routes
+
+| Route | Description |
+|---|---|
+| `/` | Profile setup page |
+| `/dashboard` | Nutrition dashboard |
+
+## Frontend Architecture
+
+The frontend uses standard HTML, CSS, and JavaScript.
+
+### HTML
+
+Responsible for page structure, forms, navigation, dashboard content, and semantic markup.
+
+### CSS
+
+Responsible for layout, typography, colors, spacing, responsive behavior, components, and animations.
+
+### JavaScript
+
+Responsible for custom dropdown interactions, form validation, profile persistence, loading saved profile data, and client-side interactions.
+
+### Flask
+
+Responsible for application setup, server-side routing, and template rendering.
+
+## Data Persistence
+
+The current version uses browser `localStorage` for profile persistence.
+
+The profile is stored using:
+
+```text
+proteinProfile
+```
+
+Example:
+
+```json
+{
+  "name": "SHUBHAM MALI",
+  "age": "18",
+  "gender": "male",
+  "weight": "63",
+  "height": "180",
+  "goal": "gain"
+}
+```
+
+A database-backed persistence layer will be introduced as the project evolves.
+
+## Design Principles
+
+ProteinTracker follows a minimal, product-focused design approach.
+
+The interface prioritizes:
+
+- Clear information hierarchy
+- Strong typography
+- Consistent spacing
+- Generous whitespace
+- Minimal visual noise
+- Simple navigation
+- Clear interactions
+- Responsive layouts
+
+The goal is to make nutrition information easy to scan without adding unnecessary complexity.
+
+## Development Principles
+
+### UI Consistency
+
+Components should follow the established typography, spacing, colors, and interaction patterns.
+
+### Keep the Code Understandable
+
+Prefer straightforward implementations over unnecessary abstractions or complexity.
+
+### Separate Responsibilities
+
+HTML handles structure, CSS handles presentation, JavaScript handles client-side behavior, and Flask handles server-side routing.
+
+### Build Incrementally
+
+New functionality should be introduced in small, testable stages without unnecessarily breaking existing features.
+
+### Avoid Over-Engineering
+
+Use the simplest reliable solution that fits the current requirements.
+
+## Current Status
+
+**Development — In Progress**
+
+### Completed
+
+- [x] Flask application setup
+- [x] Profile setup page
+- [x] Profile form
+- [x] Custom dropdowns
+- [x] Client-side validation
+- [x] Local profile persistence
+- [x] Dashboard route
+- [x] Dashboard UI foundation
+- [x] Protein progress interface
+
+### In Progress
+
+- [ ] Meal logging
+- [ ] Protein calculations
+- [ ] Calorie calculations
+- [ ] Persistent nutrition data
+- [ ] Progress analytics
+- [ ] Backend data layer
+- [ ] Database integration
+- [ ] Authentication
+
+## Roadmap
+
+### Phase 1 — Foundation
+
+- Profile creation
+- Dashboard
+- Core UI system
+- Basic nutrition tracking
+
+### Phase 2 — Nutrition Tracking
+
+- Meal logging
+- Protein calculations
+- Calorie calculations
+- Daily targets
+- Meal history
+
+### Phase 3 — Progress
+
+- Weekly trends
+- Progress statistics
+- Consistency tracking
+- Historical nutrition data
+
+### Phase 4 — Backend
+
+- Database integration
+- User accounts
+- Server-side persistence
+- API endpoints
+
+### Phase 5 — Product Polish
+
+- Responsive refinement
+- Accessibility improvements
+- Performance improvements
+- UI/UX refinement
+- Production deployment
+
+## Development Workflow
+
+```text
+Plan
+  ↓
+Implement
+  ↓
+Run Locally
+  ↓
+Test
+  ↓
+Review UI/UX
+  ↓
+Fix Issues
+  ↓
+Commit
+  ↓
+Continue
+```
+
+Keep Git commits focused on one meaningful change whenever possible.
+
+Example commit messages:
+
+```text
+chore: initialize flask project
+feat: add profile setup
+feat: add dashboard layout
+feat: add profile persistence
+feat: add meal tracking
+fix: correct dashboard spacing
+style: refine responsive layout
+```
+
+## Production Considerations
+
+The current application is intended for development and learning.
+
+Before production deployment, address:
+
+- Production Flask configuration
+- Secure configuration management
+- Database persistence
+- Authentication
+- Input validation
+- Error handling
+- Logging
+- Security headers
+- Production WSGI server
+- Deployment configuration
+
+Flask debug mode should not be enabled in production.
+
+## Future Architecture
+
+```text
+Browser
+   │
+   ▼
+HTML / CSS / JavaScript
+   │
+   ▼
+Flask Application
+   │
+   ├── Routes
+   ├── Business Logic
+   └── API
+        │
+        ▼
+     Database
+```
+
+This will allow user profiles and nutrition records to persist across sessions and devices.
+
+## Contributing
+
+This is currently a personal development project.
+
+When making changes:
+
+1. Understand the existing implementation.
+2. Keep the established UI/UX consistent.
+3. Avoid unnecessary dependencies.
+4. Test existing functionality before committing.
+5. Keep commits focused and descriptive.
+6. Do not introduce unrelated changes.
+
+## License
+
+This project is currently intended for personal and educational development.
+
+License information can be added when the project is prepared for public distribution.
+
+## Author
+
+**Shubham Mali**
+
+Computer Science & Business Systems
+
+Built with Python, Flask, HTML, CSS, and JavaScript.
